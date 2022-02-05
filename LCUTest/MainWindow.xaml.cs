@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Shell;
 
 namespace LCUTest
 {
@@ -25,24 +26,14 @@ namespace LCUTest
         {
             InitializeComponent();
 
-            InitializeBaseOnWindowSettings();
+            mainTabControl.SelectionChanged += TabControl_SelectionChanged;
 
-            this.Deactivated += (s, e) => Window_Deactivated(s, e);
-
-            frameTest.Navigate(new LayoutPage());
+            new OverlayWindow().Show();
         }
 
-        private void InitializeBaseOnWindowSettings()
+        public void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Height = 1080;
-            this.Width = 1920;
-            this.Topmost = true;
-        }
-
-        private void Window_Deactivated(object sender, EventArgs e)
-        {
-            Window window = (Window)sender;
-            window.Topmost = true;
+            mainFrame.Navigate(((sender as TabControl).SelectedItem as TabItem).Tag + ".xaml");
         }
     }
 }

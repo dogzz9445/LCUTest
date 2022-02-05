@@ -4,16 +4,97 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LCUTest"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent"
+        Background="#F8242424"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" 
-        Height="1080"
-        Width="1920"
+        Title="MainWindow"
+        Width="1280"
+        Height="720"
+        Style="{StaticResource CustomTitleBar}"
         WindowStartupLocation="CenterScreen">
-
-    <Frame x:Name="frameTest" />
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}" />
+    </WindowChrome.WindowChrome>
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <DockPanel LastChildFill="True">
+                <Border Background="LightBlue"
+                        DockPanel.Dock="Top"
+                        Height="{x:Static SystemParameters.CaptionHeight}"
+                        x:Name="titlebar">
+                    <Grid>
+                        <TextBlock Text="{TemplateBinding Title}"
+                                   Margin="10,0,0,0"
+                                   VerticalAlignment="Center">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="White"
+                                                  ShadowDepth="3" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                    </Grid>
+                </Border>
+                <Border Background="{TemplateBinding Background}"
+                        Padding="4">
+                    <ContentPresenter />
+                </Border>
+            </DockPanel>
+        </ControlTemplate>
+    </Window.Template>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--#region 윈도우 캡션바-->
+        <!--#region 배경색을 바꾸거나 아이콘을 넣는 등 커스터마이징할 수 있음.-->
+        <DockPanel Background="Black"
+                   LastChildFill="False">
+            <DockPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="DockPanel.Dock"
+                            Value="Right" />
+                    <Setter Property="Width"
+                            Value="30" />
+                    <!-- WindowChrome의 caption위에 있는 버튼을 클릭하려면 True로 설정해야 함. -->
+                    <Setter Property="WindowChrome.IsHitTestVisibleInChrome"
+                            Value="True" />
+                    <Setter Property="Background"
+                            Value="Transparent" />
+                    <Setter Property="Foreground"
+                            Value="White" />
+                    <Setter Property="BorderThickness"
+                            Value="0" />
+                </Style>
+            </DockPanel.Resources>
+            <Button Content="X"/>
+            <Button Content="ㅁ"/>
+            <Button Content="_"/>
+        </DockPanel>
+        <!--#endregion-->
+        
+        <TabControl Style="{DynamicResource MaterialDesignNavigatilRailTabControl}"
+                    Background="Transparent"
+                    x:Name="mainTabControl"
+                    Grid.Row="1">
+            <TabItem Style="{DynamicResource MaterialDesignNavigationRailTabItem}"
+                     Tag="HomePage">
+                <TabItem.Header>
+                    <materialDesign:PackIcon Kind="Home"
+                                             Width="32"
+                                             Height="32" />
+                </TabItem.Header>
+                <Frame Source="/View/HomePage.xaml" />
+            </TabItem>
+            <TabItem Style="{DynamicResource MaterialDesignNavigationRailTabItem}"
+                     Header="Debug"
+                     Tag="DebugPage">
+                <Frame Source="/View/DebugPage.xaml" />
+            </TabItem>
+            <Frame x:Name="mainFrame" />
+        </TabControl>
+    </Grid>
 </Window>
