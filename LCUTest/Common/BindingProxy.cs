@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace RemoteSystemManager.Common
+namespace Common
 {
     public class BindingProxy : Freezable
     {

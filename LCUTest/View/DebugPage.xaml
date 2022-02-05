@@ -4,12 +4,41 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LCUTest.View"
+      xmlns:model="clr-namespace:LCUTest.Model"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DebugPage">
 
+    <Page.Resources>
+        <DataTemplate x:Key="LogListViewTemplate"
+                      DataType="{x:Type model:Log}">
+            <Border Style="{StaticResource MaterialDesignToolBarMainPanelBorderStyle}"
+                    Background="#24888888">
+                <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}"
+                            Text="{Binding Path=Description}" />
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid>
-        <ListView />
-        <TextBlock Text="Debug" Foreground="White"/>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding CommandApiUrl}"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         VerticalAlignment="Center"
+                         Foreground="White"
+                         Width="300" />
+                <TextBox Text="{Binding CommandApiMethod}"
+                         Foreground="White"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         VerticalAlignment="Center"
+                         Width="100"
+                         Cursor="IBeam" />
+                <Button Command="{Binding ConnectCommand}" Content="연결" />
+                <Button Command="{Binding TestCommand}" Content="테스트" />
+                <Button x:Name="btnClose" Content="연결종료" />
+            </StackPanel>
+            <ListView x:Name="ListViewLog" ItemTemplate="{DynamicResource LogListViewTemplate}"/>
+        </StackPanel>
     </Grid>
 </Page>

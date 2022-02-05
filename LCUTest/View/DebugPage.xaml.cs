@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LCUTest.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace LCUTest.View
     /// </summary>
     public partial class DebugPage : Page
     {
+        private DebugViewModel ViewModel;
+
         public DebugPage()
         {
             InitializeComponent();
+
+            ViewModel = new DebugViewModel();
+            this.DataContext = ViewModel;
+
+            ListViewLog.ItemsSource = ViewModel.Logs;
         }
     }
 }

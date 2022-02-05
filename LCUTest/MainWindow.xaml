@@ -61,18 +61,21 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <Button Grid.Column="1"
+                        Click="ButtonMinimize_Click"
                         HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="WindowMinimize"
                                              Width="16"
                                              Height="16" />
                 </Button>
                 <Button Grid.Column="2"
+                        Click="ButtonMaximized_Click"
                         HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="WindowMaximize"
                                              Width="16"
                                              Height="16" />
                 </Button>
                 <Button Grid.Column="3"
+                        Click="ButtonClose_Click"
                         HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="Close"
                                              Width="16"

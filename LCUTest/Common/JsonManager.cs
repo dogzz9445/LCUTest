@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RemoteSystemManager.Common
+namespace Common
 {
     public static class JsonManager
     {
