@@ -23,6 +23,11 @@ namespace LCUTest
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Height = 1920;
+            this.Width = 1080;
+
+            this.Topmost = true;
         }
     }
 }
