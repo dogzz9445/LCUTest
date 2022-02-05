@@ -11,11 +11,9 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" 
-        Height="1920" 
-        Width="1080"
+        Height="1080"
+        Width="1920"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
-        <Button Width="100" Content="hello"/>
-    </Grid>
+    <Frame x:Name="frameTest" />
 </Window>
