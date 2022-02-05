@@ -33,7 +33,30 @@ namespace LCUTest
 
         public void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mainFrame.Navigate(((sender as TabControl).SelectedItem as TabItem).Tag + ".xaml");
+            //mainFrame.Navigate(((sender as TabControl).SelectedItem as TabItem).Tag + ".xaml");
+        }
+
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void ButtonMaximized_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
