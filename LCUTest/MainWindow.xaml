@@ -23,7 +23,8 @@
                       NonClientFrameEdges="None" />
     </WindowChrome.WindowChrome>
     <Window.Resources>
-        <Style TargetType="{x:Type Button}">
+        <Style TargetType="{x:Type Button}"
+               x:Key="WindowMinimizeMaximizeButton">
             <Setter Property="DockPanel.Dock"
                     Value="Right" />
             <Setter Property="Width"
@@ -36,6 +37,28 @@
                     Value="White" />
             <Setter Property="BorderThickness"
                     Value="0" />
+        </Style>
+        <Style TargetType="{x:Type Button}"
+               x:Key="WindowCloseButton">
+            <Setter Property="DockPanel.Dock"
+                    Value="Right" />
+            <Setter Property="Width"
+                    Value="24" />
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome"
+                    Value="True" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter Property="Background"
+                            Value="Red" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     
@@ -50,7 +73,6 @@
                     <ColumnDefinition Width="24" />
                     <ColumnDefinition Width="24" />
                     <ColumnDefinition Width="24" />
-                    <ColumnDefinition Width="4" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="LCUTest"
                            Margin="10,0,0,0"
@@ -61,6 +83,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
                 <Button Grid.Column="1"
+                        Style="{StaticResource WindowMinimizeMaximizeButton}"
                         Click="ButtonMinimize_Click"
                         HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="WindowMinimize"
@@ -68,6 +91,7 @@
                                              Height="16" />
                 </Button>
                 <Button Grid.Column="2"
+                        Style="{StaticResource WindowMinimizeMaximizeButton}"
                         Click="ButtonMaximized_Click"
                         HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="WindowMaximize"
@@ -75,6 +99,7 @@
                                              Height="16" />
                 </Button>
                 <Button Grid.Column="3"
+                        Style="{StaticResource WindowCloseButton}"
                         Click="ButtonClose_Click"
                         HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="Close"
