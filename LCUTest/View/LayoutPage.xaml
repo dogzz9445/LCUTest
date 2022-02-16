@@ -20,19 +20,20 @@
                 BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="64" />
-                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="268" />
+                    <ColumnDefinition Width="78" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="8" />
-                    <ColumnDefinition Width="64" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="242" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="64" />
-                    <RowDefinition Height="8" />
+                    <RowDefinition Height="72" />
+                    <RowDefinition Height="272" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="8" />
-                    <RowDefinition Height="64" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="280" />
                 </Grid.RowDefinitions>
+                
                 <Border Grid.Column="0"
                         Grid.Row="0"
                         Style="{StaticResource borderWhite}" />

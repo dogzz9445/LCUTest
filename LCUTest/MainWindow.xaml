@@ -127,6 +127,14 @@
                 </TabItem>
                 <TabItem Style="{DynamicResource MaterialDesignNavigationRailTabItem}"
                          Header="Debug"
+                         Tag="L">
+                    <Border CornerRadius="8"
+                            Background="#0FFFFFFF">
+                        <Frame Source="/View/DebugPage.xaml" />
+                    </Border>
+                </TabItem>
+                <TabItem Style="{DynamicResource MaterialDesignNavigationRailTabItem}"
+                         Header="Debug"
                          Tag="DebugPage">
                     <Border CornerRadius="8"
                             Background="#0FFFFFFF">
